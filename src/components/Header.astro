@@ -1,0 +1,22 @@
+---
+import winboat_logo from "../assets/winboat_logo.png";
+---
+
+<header class="flex w-full items-center justify-between my-5">
+    <div class="flex flex-row items-center gap-2 select-none">
+        <img src={winboat_logo.src} alt="WinBoat Logo" class="h-12 w-12" />
+        <span class="text-3xl font-semibold text-indigo-400">WinBoat</span>
+    </div>
+    <nav>
+        <ul class="
+            flex flex-row items-center gap-6 px-6 py-2 rounded-full border-2 border-indigo-500 bg-indigo-500/20 text-indigo-300
+            shadow-md shadow-indigo-500/60 transition-colors duration-300
+            *:hover:text-shadow-indigo-500 *:hover:text-shadow-md *:hover:text-white *:transition-all *:hover:px-0.5 *:hover:scale-x-110
+        ">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#download">Download</a></li>
+            <li><a href="#contribute">Contribute</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+
+const currentVersion = "v0.5.15";
+---
+
+<section id="download" class="min-h-screen flex flex-col items-center justify-center">
+    <h2 class="text-5xl font-semibold mb-12 text-center">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-transparent to-indigo-400">DDDD/</span><!--
+        -->Download<!--
+        --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/ddddd</span>
+    </h2>
+
+    <p class="text-lg text-gray-300 max-w-2xl text-center mb-8">
+        We're excited to have you onboard! Pick your platform below to get started with WinBoat within minutes, not hours.
+    </p>
+
+    <div class="flex flex-row">
+        <div class="flex flex-col items-center gap-6 p-4 rounded-l-xl shadow-lg bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 border-r-2 border-indigo-500">
+            <div class="flex flex-col items-center">
+                <Icon class="h-16 w-16 text-indigo-400" name="uim:linux" />
+                <h2 class="font-bold">Linux</h2>
+            </div>
+            <div class="flex flex-col items-center opacity-30" title="Planned for future releases">
+                <Icon class="h-16 w-16 text-indigo-400" name="uim:apple" />
+                <h2 class="font-bold">Mac</h2>
+            </div>
+        </div>
+        <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col gap-6">
+            <h3 class="text-2xl font-semibold flex flex-row items-center gap-2">
+                <Icon class="h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
+                AppImage
+            </h3>
+            <p class="text-neutral-300">
+                AppImage releases are built automatically by GitHub's CI system on every tagged release.
+                They are generally compatible with most modern Linux distributions, however you are the one responsible for keeping them up to date.
+            </p>
+            <a
+                href="https://github.com/TibixDev/winboat/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex flex-row items-center gap-2 rounded-md bg-indigo-500 px-5 py-2 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                    shadow-md shadow-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/70 w-max"
+            >
+                <Icon class="h-6 w-6" name="fluent:arrow-download-32-filled" />
+                Download AppImage
+            </a>
+            <p class="text-neutral-400 text-sm">Current Version: { currentVersion }</p>
+        </div>
+    </div>
+</section>

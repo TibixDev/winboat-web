@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+import winboat_logo from "../assets/winboat_logo.png";
+---
+
+<section id="hero">
+    <div class="flex min-h-[85dvh] flex-col items-center justify-center">
+        <img src={winboat_logo.src} alt="WinBoat Logo" class="mb-4 h-56 w-56" />
+        <div class="p-8 text-center">
+            <h1 class="mb-4 bg-gradient-to-r from-neutral-300 to-white bg-clip-text text-5xl leading-15 font-bold text-transparent">
+                Run Windows apps on <span class="text-white">🐧</span> Linux<br />with <span class="text-indigo-400">✨ seamless</span> integration
+            </h1>
+        </div>
+        <div class="flex flex-row gap-6">
+            <a
+                href="#features"
+                class="flex flex-row items-center gap-2 rounded-md bg-indigo-200 px-6 py-3 text-neutral-700 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                     shadow-md shadow-indigo-200/60 hover:shadow-lg hover:shadow-indigo-200/70"
+            >
+                <Icon class="h-6 w-6" name="fluent:apps-list-detail-32-filled" />
+                Explore Features
+            </a>
+            <a
+                href="#download"
+                class="flex flex-row items-center gap-2 rounded-md bg-indigo-500 px-6 py-3 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                    shadow-md shadow-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/70"
+            >
+                <Icon class="h-6 w-6" name="fluent:arrow-download-32-filled" />
+                Download
+            </a>
+        </div>
+    </div>
+</section>

@@ -1,22 +1,136 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Primary Meta Tags -->
+        <title>WinBoat - Run Windows Apps on Linux with Seamless Integration</title>
+        <meta name="title" content="WinBoat - Run Windows Apps on Linux with Seamless Integration" />
+        <meta name="description" content="WinBoat lets you run any Windows application on Linux with seamless desktop integration. Elegant interface, automated installs, filesystem integration, and native OS-level windows." />
+        <meta name="keywords" content="windows on linux, wine alternative, virtual machine, windows apps linux, seamless integration, virtualization, compatibility layer, winboat, cross-platform" />
+        <meta name="author" content="WinBoat Team" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://winboat.app/" />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://winboat.app/" />
+        <meta property="og:title" content="WinBoat - Run Windows Apps on Linux with Seamless Integration" />
+        <meta property="og:description" content="WinBoat lets you run any Windows application on Linux with seamless desktop integration. Elegant interface, automated installs, filesystem integration, and native OS-level windows." />
+        <meta property="og:image" content="https://winboat.app/android-chrome-512x512.png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:image:alt" content="WinBoat Logo - Run Windows Apps on Linux" />
+        <meta property="og:site_name" content="WinBoat" />
+        <meta property="og:locale" content="en_US" />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://winboat.app/" />
+        <meta property="twitter:title" content="WinBoat - Run Windows Apps on Linux with Seamless Integration" />
+        <meta property="twitter:description" content="WinBoat lets you run any Windows application on Linux with seamless desktop integration. Elegant interface, automated installs, filesystem integration, and native OS-level windows." />
+        <meta property="twitter:image" content="https://winboat.app/android-chrome-512x512.png" />
+        <meta property="twitter:image:alt" content="WinBoat Logo - Run Windows Apps on Linux" />
+        
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        
+        <!-- Theme Color -->
+        <meta name="theme-color" content="#6366f1" />
+        <meta name="msapplication-TileColor" content="#6366f1" />
+        
+        <!-- Generator -->
+        <meta name="generator" content={Astro.generator} />
+        
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "WinBoat",
+          "description": "WinBoat lets you run any Windows application on Linux with seamless desktop integration. Features elegant interface, automated installs, filesystem integration, and native OS-level windows.",
+          "url": "https://winboat.app",
+          "applicationCategory": "SystemUtility",
+          "operatingSystem": "Linux",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "WinBoat Team"
+          },
+          "featureList": [
+            "Elegant Interface",
+            "Automated Windows Installation", 
+            "Run Any Windows Application",
+            "Filesystem Integration",
+            "Native OS-level Windows",
+            "Seamless Desktop Integration"
+          ],
+          "screenshot": "https://winboat.app/android-chrome-512x512.png"
+        }
+        </script>
+    </head>
+    <body>
+        <div class="relative min-h-screen w-full bg-black">
+            <div
+                class="inset-0 w-full h-screen absolute pointer-events-none"
+                style={{
+                    background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.25), transparent 70%), #00000000",
+                }}>
+            </div>
+            <div
+                class="absolute inset-0 pointer-events-none"
+                style={{
+                backgroundImage: `
+                    repeating-linear-gradient(30deg, 
+                        rgba(138, 43, 226, 0.1) 0, 
+                        rgba(138, 43, 226, 0.1) 1px, 
+                        transparent 1px, 
+                        transparent 10px,
+                        rgba(138, 43, 226, 0.15) 11px, 
+                        rgba(138, 43, 226, 0.15) 12px, 
+                        transparent 12px, 
+                        transparent 40px
+                    )
+                `,
+                }}
+            />
+
+            <main class="p-2 container mx-auto relative">
+                <Header />
+                <slot />
+            </main>
+            <Footer />
+        </div>
+    </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+    html,
+    body {
+        /* font-family: "Inter", sans-serif; */
+        font-family: "Ubuntu", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        margin: 0;
+        color: white;
+    }
 </style>

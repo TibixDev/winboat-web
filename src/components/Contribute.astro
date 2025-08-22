@@ -1,0 +1,39 @@
+---
+import OpenSourceAnim from "./OpenSourceAnim.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section id="contribute" class="min-h-screen flex flex-col items-center justify-center">
+  <h2 class="text-5xl font-semibold mb-12 text-center">
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-transparent to-indigo-400">CCCC/</span><!--
+    -->Contribute<!--
+    --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/eeeee</span>
+  </h2>
+  <div class="flex flex-col gap-6 items-center">
+    <OpenSourceAnim />
+    <p class="text-lg text-gray-300 max-w-2xl text-center">
+      WinBoat is an <a target="_blank" rel="noopener noreferrer" href="https://github.com/TibixDev/winboat">open-source project</a> licensed under MIT, and we welcome contributions from the community.
+      Whether you're a developer, designer, or just someone who loves WinBoat, there are many ways you can help us improve and grow.
+    </p>
+    <div class="flex flex-row gap-6 mt-6">
+        <a
+            href="https://github.com/TibixDev/winboat"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-row items-center gap-2 rounded-md bg-indigo-200 px-6 py-3 text-neutral-700 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                    shadow-md shadow-indigo-200/60 hover:shadow-lg hover:shadow-indigo-200/70"
+        >
+            <Icon class="h-6 w-6" name="fluent:code-block-32-filled" />
+            Browse Repository
+        </a>
+    </div>
+</div>
+
+</section>
+
+<style>
+p a {
+    color: oklch(67.3% 0.182 276.935);
+    text-decoration: underline;
+}
+</style>

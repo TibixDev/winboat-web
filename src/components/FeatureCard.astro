@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  title: string;
+  description: string;
+  iconName: string;
+  imageSrc: string;
+  imageAlt: string;
+  reverse?: boolean;
+}
+
+const { title, description, iconName, imageSrc, imageAlt, reverse = false } = Astro.props;
+---
+
+<div class={`flex items-center gap-[6rem] p-6 rounded-lg shadow-lg ${
+  reverse 
+    ? 'flex-row-reverse bg-gradient-to-l from-indigo-500/50 to-transparent translate-x-[3%]' 
+    : 'flex-row bg-gradient-to-r from-indigo-500/50 to-transparent -translate-x-[3%]'
+}`}>
+  <div class={`flex flex-col gap-2 max-w-[30rem] ${
+    reverse 
+      ? 'text-left items-start' 
+      : 'text-right items-end'
+  }`}>
+    <Icon class="h-16 w-16 text-indigo-400" name={iconName} />
+    <h2 class="text-3xl font-semibold mb-2">{title}</h2>
+    <p class="text-lg text-neutral-300">
+      {description}
+    </p>
+  </div>
+  <img src={imageSrc} alt={imageAlt} class="w-[400px] rounded-lg shadow-lg" />
+</div>
