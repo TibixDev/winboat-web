@@ -85,6 +85,19 @@ import Footer from "../components/Footer.astro";
           "screenshot": "https://winboat.app/android-chrome-512x512.png"
         }
         </script>
+
+        <!-- Smooth scrolling -->
+        <script>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        </script>
     </head>
     <body>
         <div class="relative min-h-screen w-full bg-black">
