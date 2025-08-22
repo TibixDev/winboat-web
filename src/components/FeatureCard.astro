@@ -13,18 +13,20 @@ interface Props {
 const { title, description, iconName, imageSrc, imageAlt, reverse = false } = Astro.props;
 ---
 
-<div class={`flex items-center gap-5 2xl:gap-[6rem] mx-3 md:mx-0 p-3 md:p-6 rounded-lg shadow-lg ${
+<div class={`flex items-center gap-5 2xl:gap-[6rem] snap-center mx-3 md:mx-0 p-6 rounded-lg shadow-lg ${
   reverse 
-    ? 'flex-col md:flex-row-reverse bg-gradient-to-l from-indigo-500/50 to-transparent translate-x-[3%]' 
-    : 'flex-col md:flex-row bg-gradient-to-r from-indigo-500/50 to-transparent -translate-x-[3%]'
-}`}>
-  <div class={`flex flex-col gap-2 max-w-[30rem] ${
+  ? 'flex-col md:flex-row-reverse bg-gradient-to-l from-indigo-500/50 via-transparent to-indigo-500/50 md:via-none md:to-transparent md:translate-x-[3%]' 
+  : 'flex-col md:flex-row bg-gradient-to-r from-indigo-500/50 via-transparent to-indigo-500/50 md:via-none md:to-transparent md:-translate-x-[3%]'
+  }`}>
+  <div class={`flex flex-col gap-2 w-[75vw] h-80 md:max-w-[30rem] ${
     reverse 
       ? 'text-left items-start' 
-      : 'text-right items-end'
+      : 'text-left md:text-right items-start md:items-end'
   }`}>
-    <Icon class="h-16 w-16 text-indigo-400" name={iconName} />
-    <h2 class="text-3xl font-semibold mb-2">{title}</h2>
+    <div class="flex flex-row md:flex-col gap-3 items-center md:items-start md:gap-0">
+      <Icon class="h-16 w-16 text-indigo-400" name={iconName} />
+      <h2 class="text-3xl font-semibold mb-2">{title}</h2>
+    </div>
     <p class="text-lg text-neutral-300">
       {description}
     </p>

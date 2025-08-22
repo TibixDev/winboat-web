@@ -5,6 +5,7 @@ import feat_apps from "../assets/features/feat_apps.png";
 import feat_fs from "../assets/features/feat_fs.png";
 import feat_misc from "../assets/features/feat_misc.png";
 import FeatureCard from "./FeatureCard.astro";
+import { Icon } from "astro-icon/components";
 
 const features = [
   {
@@ -56,9 +57,25 @@ const features = [
     -->Features<!--
     --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/sssss</span>
   </h2>
-  <div class="flex flex-col gap-6 items-center">
+  <div class="hidden md:flex md:flex-col md:gap-6 items-center">
     {features.map((feature) => (
       <FeatureCard {...feature} />
     ))}
   </div>
+  <!--Overflow-x conflicted with tablet view, thus mobile view is separated.-->
+  <div class="flex md:hidden justify-center text-center items-center gap-1 mb-5 text-gray-300">
+    <Icon class="w-6 h-6 -rotate-20 origin-bottom animate-[wiggle_3s_ease-out_infinite] -translate-y-1" name="material-symbols:swipe" />
+    <p>Scroll for <span class="text-indigo-300">more</span>!</p>
+  </div>
+  <div class="flex md:hidden overflow-x-auto snap-x md:gap-6 items-center">
+    {features.map((feature) => (
+      <FeatureCard {...feature} />
+    ))}
+  </div>
+  <style>
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-20deg); }
+      50% { transform: rotate(20deg); }
+    }
+  </style>
 </section>
