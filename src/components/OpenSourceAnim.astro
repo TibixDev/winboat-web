@@ -6,16 +6,16 @@ function arrayTill(n: number) {
 }
 ---
 
-<div id="foss-emblem" class="my-12 flex flex-col items-center justify-center gap-5 xl:flex-row" aria-labelledby="Winboat loves open-source">
-    <img src={winboat_logo.src} alt="Winboat Logo" class="border-indigo-500 h-48 w-48 border-0 p-2" />
+<div id="foss-emblem" class="2xl:my-12 flex flex-col items-center justify-center gap-5 xl:flex-row" aria-labelledby="Winboat loves open-source">
+    <img src={winboat_logo.src} alt="Winboat Logo" class="border-indigo-500 w-32 h-32 2xl:h-48 2xl:w-48 border-0 p-2" />
     {
         arrayTill(3).map((n) => {
-            return <div class="h-5 w-5 animate-pulse rounded-full bg-indigo-400" style={`animation-delay: ${n * 200}ms;`} />;
+            return <div class="h-3 w-3 2xl:h-5 2xl:w-5 animate-pulse rounded-full bg-indigo-400" style={`animation-delay: ${n * 200}ms;`} />;
         })
     }
     <div id="foss-heart" class="relative">
         <div class="absolute top-0 left-0 -z-10 h-full w-full rounded-full bg-red-500/30 blur-xl"></div>
-        <svg aria-labelledby="Heart Icon" class="h-32 w-32 animate-pulse fill-red-500" viewBox="0 0 24 24"
+        <svg aria-labelledby="Heart Icon" class="w-16 h-16 2xl:h-32 2xl:w-32 animate-pulse fill-red-500" viewBox="0 0 24 24"
             ><path
                 d="M12 20.325q-.35 0-.713-.125t-.637-.4l-1.725-1.575q-2.65-2.425-4.788-4.813T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.538t2.5-.562q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125Z"
             ></path>
@@ -23,11 +23,11 @@ function arrayTill(n: number) {
     </div>
     {
         arrayTill(3).map((n) => {
-            return <div class="bg-indigo-400 h-5 w-5 animate-pulse rounded-full" style={`animation-delay: ${(n + 5) * 200}ms;`} />;
+            return <div class="bg-indigo-400 h-3 w-3 2xl:h-5 2xl:w-5 animate-pulse rounded-full" style={`animation-delay: ${(n + 5) * 200}ms;`} />;
         })
     }
     <div>
-        <svg class="border-indigo-500 fill-indigo-500 h-48 w-48 rounded-full border-4 p-2" viewBox="0 0 24 24"
+        <svg class="border-indigo-500 fill-indigo-500 w-24 h-24 2xl:h-48 2xl:w-48 rounded-full border-4 p-2" viewBox="0 0 24 24"
             ><path
                 d="M12.001 2c5.523 0 10 4.477 10 10c0 4.13-2.504 7.676-6.077 9.201l-2.518-6.55A3 3 0 0 0 12 9a3 3 0 0 0-1.404 5.652l-2.518 6.55A10.003 10.003 0 0 1 2 12C2 6.477 6.477 2 12 2Z"
             ></path></svg
