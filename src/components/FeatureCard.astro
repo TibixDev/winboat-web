@@ -20,10 +20,10 @@ const { title, description, iconName, imageSrc, imageAlt, reverse = false } = As
   }`}>
   <div class={`flex flex-col gap-2 w-[75vw] h-80 md:max-w-[30rem] ${
     reverse 
-      ? 'text-left md:text-right items-start md:items-end' 
-      : 'text-left items-start'
+      ? 'text-left md:text-left items-start md:items-start' 
+      : 'text-left md:text-right items-start md:items-end'
   }`}>
-    <div class={`flex flex-row md:flex-col gap-3 items-center ${reverse ? 'md:items-end' : 'md:items-start'} md:gap-0`}>
+    <div class={`flex flex-row md:flex-col gap-3 items-center ${reverse ? 'md:items-start' : 'md:items-end'} md:gap-0`}>
       <Icon class="h-16 w-16 text-indigo-400" name={iconName} />
       <h2 class="text-3xl font-semibold mb-2">{title}</h2>
     </div>
