@@ -31,5 +31,10 @@ const { title, description, iconName, imageSrc, imageAlt, reverse = false } = As
       {description}
     </p>
   </div>
-  <img src={imageSrc} alt={imageAlt} class="w-[400px] md:w-[300px] lg:w-[400px] rounded-lg shadow-lg" />
+  <img
+    src={imageSrc}
+    alt={imageAlt}
+    class="w-[400px] md:w-[300px] lg:w-[400px] rounded-lg shadow-lg cursor-pointer transition-all duration-200 hover:shadow-xl hover:scale-105 hover:brightness-110"
+    onclick={`window.lightbox?.open('${imageSrc}', '${imageAlt}')`}
+  />
 </div>

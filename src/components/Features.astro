@@ -5,6 +5,7 @@ import feat_apps from "../assets/features/feat_apps.png";
 import feat_fs from "../assets/features/feat_fs.png";
 import feat_misc from "../assets/features/feat_misc.png";
 import FeatureCard from "./FeatureCard.astro";
+import Lightbox from "./Lightbox.astro";
 import { Icon } from "astro-icon/components";
 
 const features = [
@@ -72,6 +73,10 @@ const features = [
       <FeatureCard {...feature} />
     ))}
   </div>
+
+  <!-- Lightbox component for image viewing -->
+  <Lightbox />
+
   <style>
     @keyframes wiggle {
       0%, 100% { transform: rotate(-20deg); }

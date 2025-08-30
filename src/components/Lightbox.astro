@@ -1,0 +1,136 @@
+---
+// Lightbox component for displaying images in modal overlay
+---
+
+<div id="lightbox" class="lightbox-overlay fixed inset-0 z-50 bg-black/80 backdrop-blur-sm items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+  <!-- Close button positioned at top right of screen -->
+  <button
+    id="lightbox-close"
+    class="fixed top-4 right-4 text-white hover:text-gray-300 transition-colors text-2xl font-bold z-10 cursor-pointer bg-black/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/70"
+    aria-label="Close lightbox"
+  >
+    ✕
+  </button>
+
+  <div class="lightbox-container max-w-4xl max-h-full flex flex-col items-center">
+    <img
+      id="lightbox-image"
+      src=""
+      alt=""
+      class="lightbox-image max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+    />
+    <div class="lightbox-caption bg-black/60 text-white p-4 rounded-lg mt-4 max-w-2xl w-full">
+      <p id="lightbox-caption-text" class="text-center"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .lightbox-overlay {
+    display: flex;
+  }
+
+  .lightbox-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-image {
+    animation: zoomIn 0.3s ease-out;
+  }
+
+  @keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+<script>
+  // Type declarations
+  declare global {
+    interface Window {
+      lightbox: Lightbox;
+    }
+  }
+
+  // Lightbox functionality
+  class Lightbox {
+    overlay: HTMLElement | null;
+    image: HTMLImageElement | null;
+    caption: HTMLElement | null;
+    closeBtn: HTMLElement | null;
+    currentImageSrc: string;
+    currentImageAlt: string;
+
+    constructor() {
+      this.overlay = document.getElementById('lightbox');
+      this.image = document.getElementById('lightbox-image') as HTMLImageElement;
+      this.caption = document.getElementById('lightbox-caption-text');
+      this.closeBtn = document.getElementById('lightbox-close');
+      this.currentImageSrc = '';
+      this.currentImageAlt = '';
+
+      this.init();
+    }
+
+    init() {
+      if (!this.overlay) return;
+
+      // Close lightbox when clicking overlay
+      this.overlay.addEventListener('click', (e: Event) => {
+        if (e.target === this.overlay) {
+          this.close();
+        }
+      });
+
+      // Close lightbox with close button
+      if (this.closeBtn) {
+        this.closeBtn.addEventListener('click', () => this.close());
+      }
+
+      // Close lightbox with Escape key
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Escape' && this.overlay!.classList.contains('show')) {
+          this.close();
+        }
+      });
+    }
+
+    open(imageSrc: string, imageAlt: string) {
+      if (!this.overlay || !this.image) return;
+
+      this.currentImageSrc = imageSrc;
+      this.currentImageAlt = imageAlt;
+
+      this.image.src = imageSrc;
+      this.image.alt = imageAlt;
+      if (this.caption) {
+        this.caption.textContent = imageAlt;
+      }
+
+      this.overlay.classList.add('show');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    close() {
+      if (!this.overlay) return;
+
+      this.overlay.classList.remove('show');
+      document.body.style.overflow = ''; // Restore scrolling
+    }
+  }
+
+  // Initialize lightbox when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    window.lightbox = new Lightbox();
+  });
+
+  // Also initialize immediately if DOM is already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      window.lightbox = new Lightbox();
+    });
+  } else {
+    window.lightbox = new Lightbox();
+  }
+</script>
