@@ -1,0 +1,88 @@
+<section id="faq">
+    <h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold mb-12 text-center">
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-transparent to-indigo-400">FFFFF/</span><!--
+    -->Frequently Asked Questions<!--
+    --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/sssss</span>
+    </h2>
+
+    <div class="flex flex-col gap-6 w-[95%] lg:w-[60%] m-auto text-left">
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">How does it compare to WinApps?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">With WinApps you do the bulk of the setup manually, and there's no cohesive interface to bring it all together. There's a basic TUI, a taskbar widget, and some CLI commands for you to play with.<br><br>
+                WinBoat does all the setup once you have the pre-requisites installed, displays everything worth seeing in a neat interface for you, and acts like a complete experience. No need to mess with configuration files, no need to memorize a dozen CLI commands, it just works.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">What are the advantages of using this over CrossOver or WINE?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">You can run stuff that doesn't play well with CrossOver or WINE, and have a full Windows desktop at the same time.<br><br>
+            We've had numerous apps that weren't working nicely (or at all) in Wine, this is one of the reasons we've created WinBoat. Some examples would be Affinity Photo, Paint Tool Sai v1.0, the entire Adobe suite, AeroChat, Acrobat, and of course Office.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">Is there GPU passthrough?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">Not at the moment, but we plan on eventually implementing GPU acceleration through paravirtualized drivers.<br><br>
+            We have looked at MVisor Win VGPU Driver for OpenGL, which seems promising from our tests, but it's for a different hypervisor (not compatible with QEMU). Some other folks are also working on DirectX drivers but nothing that we can try out yet.<br><br>
+            We have also looked into Looking Glass extensively, specifically their Indirect Display Driver which does not need a second GPU, because it'd be absolutely amazing to have it. We got the driver to compile and start via some hacks, but couldn't get much more than a black screen. The developer says it is not ready for general use yet at all, however we plan to integrate it once it is ready.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">Does it run games with anti-cheat that don't run on Linux?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">Unfortunately running games with kernel anti-cheat is not possible, as they block virtualization.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">Any possibility of adding Podman support as a Docker alternative?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">Podman support is planned. We tried working on it, some contributors also tried working on it, but there's some issues with networking (specifically the guest server being unreachable) that prevent it from being functional for now.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">Will you make it into a Flatpak?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">This is on our to-do list, but it'll take some effort because Flatpak is pretty isolated from the rest of the system and apps, so we'd have to find a way to expose installed apps, the Docker binary, and the Docker socket, and many other utilities.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">So, am I able to run Office 365 on it?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">Yes. : )</p>
+        </details>
+    </div>
+</section>
+
+<style>
+    details {
+        overflow: hidden;
+    }
+    
+    .details-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.01s ease-out;
+    }
+    
+    details[open] .details-content {
+        max-height: none;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const details = document.querySelectorAll('details');
+        
+        details.forEach(detail => {
+            const summary = detail.querySelector('summary') as HTMLElement;
+            const content = detail.querySelector('.details-content') as HTMLElement;
+            
+            summary.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                if (detail.open) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.offsetHeight;
+                    content.style.maxHeight = '0';
+                    
+                    content.addEventListener('transitionend', () => {
+                        detail.open = false;
+                    }, { once: true });
+                } else {
+                    detail.open = true;
+                    content.style.maxHeight = '0';
+                    content.offsetHeight;
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+    });
+</script>
