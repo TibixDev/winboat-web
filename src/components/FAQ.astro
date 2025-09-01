@@ -63,6 +63,8 @@
 </style>
 
 <script>
+    // Small animation for expanding/collapsing details.
+
     document.addEventListener('DOMContentLoaded', () => {
         const details = document.querySelectorAll('details');
         
@@ -90,4 +92,32 @@
             });
         });
     });
+
+
+    // Redirect to certain FAQ details if hash matches the question.
+    
+    const hash = window.location.hash;
+    const summaries = [...document.querySelectorAll('summary')];
+    const detailsIds = summaries.map(e =>
+        e.innerText
+            .toLowerCase()
+            .replace(/\?/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+    );
+
+    for (let i = 0; i < detailsIds.length; i++) {
+        const id = detailsIds[i];
+        if (hash === `#${id}`) {
+            const detail = summaries[i].closest('details');
+            if (detail) {
+                detail.setAttribute('id', id);
+                detail.open = true;
+                const content = detail.querySelector('.details-content') as HTMLElement;
+                if (content) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            }
+            break;
+        }
+    }
 </script>
