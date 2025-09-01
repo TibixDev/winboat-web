@@ -23,6 +23,11 @@
             We have also looked into Looking Glass extensively, specifically their Indirect Display Driver which does not need a second GPU, because it'd be absolutely amazing to have it. We got the driver to compile and start via some hacks, but couldn't get much more than a black screen. The developer says it is not ready for general use yet at all, however we plan to integrate it once it is ready.</p>
         </details>
         <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">Will I be able to configure my hardware for apps running on WinBoat?</summary>
+            <p class="details-content p-6 tracking-wide leading-8">For devices with USB, you can! When eventually we add USB passthrough, you'll be able to do it from the WinBoat app itself, like you'll be able to pick your mouse/keyboard and pass then configure it.<br><br>
+            Until then, you can modify the <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose.yml</span> file in <span class="bg-indigo-300/30 p-1.5 rounded-lg">~/.winboat</span> once you finished setting up WinBoat. You can add the appropriate USB devices <a href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-pass-through-a-usb-device" class="text-indigo-400 underline underline-offset-3">like this</a>, followed by executing <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose down</span> and <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose up -d</span> in the same folder.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
             <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer">Does it run games with anti-cheat that don't run on Linux?</summary>
             <p class="details-content p-6 tracking-wide leading-8">Unfortunately running games with kernel anti-cheat is not possible, as they block virtualization.</p>
         </details>
