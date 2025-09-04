@@ -1,7 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-
-const currentVersion = "v0.7.2";
 ---
 
 <section id="download" class="min-h-screen flex flex-col items-center justify-center">
@@ -45,7 +43,21 @@ const currentVersion = "v0.7.2";
                 <Icon class="h-6 w-6" name="fluent:arrow-download-32-filled" />
                 Download AppImage
             </a>
-            <p class="text-neutral-400 text-sm">Current Version: { currentVersion }</p>
+            <p id="app-version" class="text-neutral-400 text-sm"></p>
         </div>
     </div>
 </section>
+
+<script>
+    async function getVersion() {
+        const res = await fetch("https://api.github.com/repos/TibixDev/WinBoat/releases/latest");
+        const version = await res.json();
+        return version;
+    }
+    const data = await getVersion();
+    if (data.tag_name) {
+        document.getElementById("app-version")!.textContent = `Current version: ${data.tag_name}`;
+    } else {
+        document.getElementById("app-version")!.textContent = `Current version: v0.7.2`;
+    }
+</script>
