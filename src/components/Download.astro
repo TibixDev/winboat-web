@@ -14,50 +14,149 @@ import { Icon } from "astro-icon/components";
     </p>
 
     <div class="flex flex-col md:flex-row">
-        <div class="flex flex-row md:flex-col justify-center md:justify-start items-center gap-6 p-4 rounded-t-xl md:rounded-l-xl md:rounded-t-none shadow-lg bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 border-t-2 md:border-t-0 md:border-r-2 border-indigo-500">
-            <div class="flex flex-col items-center">
-                <Icon class="h-16 w-16 text-indigo-400" name="uim:linux" />
-                <h2 class="font-bold">Linux</h2>
+        <div class="flex flex-row md:flex-col justify-center md:justify-start items-center overflow-hidden gap-6 py-4 px-2.5 rounded-t-xl md:rounded-l-xl md:rounded-t-none shadow-lg bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 border-t-2 md:border-t-0 md:border-r-2 border-indigo-500">
+            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-amber-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+                <Icon class="h-12 w-12" name="fluent:box-32-filled" />
+                <h2 class="font-bold text-indigo-200">AppImage</h2>
             </div>
-            <div class="flex flex-col items-center opacity-30" title="Planned for future releases">
-                <Icon class="h-16 w-16 text-indigo-400" name="uim:apple" />
-                <h2 class="font-bold">Mac</h2>
+            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80" title="Planned for future releases">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+                <Icon class="h-12 w-12" name="mdi:debian" />
+                <h2 class="font-bold text-indigo-200">Debian</h2>
+            </div>
+            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80" title="Planned for future releases">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+                <Icon class="h-12 w-12" name="mdi:fedora" />
+                <h2 class="font-bold text-indigo-200">Fedora</h2>
             </div>
         </div>
-        <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col gap-6 rounded-b-xl md:rounded-b-none">
-            <h3 class="text-2xl font-semibold flex flex-row items-center gap-2">
-                <Icon class="h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
-                AppImage
-            </h3>
-            <p class="text-neutral-300">
-                AppImage releases are built automatically by GitHub's CI system on every tagged release.
-                They are generally compatible with most modern Linux distributions, however you are the one responsible for keeping them up to date.
-            </p>
-            <a
-                href="https://github.com/TibixDev/winboat/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex flex-row items-center gap-2 rounded-md bg-indigo-500 px-5 py-2 transition ease-in-out hover:scale-x-105 hover:saturate-200
-                    shadow-md shadow-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/70 w-max"
-            >
-                <Icon class="h-6 w-6" name="fluent:arrow-download-32-filled" />
-                Download AppImage
-            </a>
-            <p id="app-version" class="text-neutral-400 text-sm"></p>
+        <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col justify-center gap-6 rounded-b-xl md:rounded-b-none">
+            <div class="flex flex-col gap-4">
+                <h3 class="text-2xl font-semibold flex flex-row items-center gap-2">
+                    <Icon id="release-icon-appimage" class=" h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
+                    <Icon id="release-icon-debian" class="hidden h-8 w-8 text-indigo-400" name="mdi:debian" />
+                    <Icon id="release-icon-rpm" class="hidden h-8 w-8 text-indigo-400" name="mdi:fedora" />
+                    <span id="release-title"></span>
+                </h3>
+                <p id="release-description" class="text-neutral-300"></p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <a
+                    id="release-url"
+                    href="https://github.com/TibixDev/winboat/releases"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex flex-row items-center gap-2 rounded-md bg-indigo-500 px-5 py-2 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                        shadow-md shadow-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/70 w-max"
+                >
+                    <Icon class="h-6 w-6" name="fluent:arrow-download-32-filled" />
+                    <p id="release-download"></p>
+                </a>
+                <p id="app-version" class="text-neutral-400 text-sm"></p>
+            </div>
         </div>
     </div>
 </section>
 
 <script>
+    // Automated version check with manual fallback.
     async function getVersion() {
         const res = await fetch("https://api.github.com/repos/TibixDev/WinBoat/releases/latest");
         const version = await res.json();
         return version;
     }
+
     const data = await getVersion();
     if (data.tag_name) {
         document.getElementById("app-version")!.textContent = `Current version: ${data.tag_name}`;
     } else {
         document.getElementById("app-version")!.textContent = `Current version: v0.7.7`;
     }
+    
+    // List of available official releases with manual fallback.
+    const dataClean = data.tag_name ? data.tag_name.replace("v", "") : "0.7.7";
+    const releases = {
+        "linux": {
+            "appImage": {
+                "name": "AppImage | Most Linux distros",
+                "description": "AppImage releases are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Linux distributions, however you are the one responsible for keeping them up to date.",
+                "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.AppImage`,
+                "download": "Download AppImage"
+            },
+            "debian": {
+                "name": ".deb | Debian based distros",
+                "description": "Debian packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Debian-based distributions, however you are the one responsible for keeping them up to date.",
+                "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-amd64.deb`,
+                "download": "Download .deb"
+            },
+            "rpm": {
+                "name": ".rpm | Fedora based distros",
+                "description": "RPM packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Fedora-based distributions, however you are the one responsible for keeping them up to date.",
+                "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.rpm`,
+                "download": "Download .rpm"
+            }
+        }
+    }
+
+    // Handling toggle between releases.
+    const linuxReleases = Object.values(releases.linux);
+    let currentReleaseIndex = 0;
+
+    const releaseTitle = document.getElementById("release-title")!;
+    const releaseDescription = document.getElementById("release-description")!;
+    const releaseUrl = document.getElementById("release-url") as HTMLAnchorElement;
+    const releaseDownload = document.getElementById("release-download")!;
+    const releaseIcons = ["release-icon-appimage", "release-icon-debian", "release-icon-rpm"];
+
+    function updateRelease() {
+        const release = linuxReleases[currentReleaseIndex];
+        releaseTitle.textContent = release.name;
+        releaseDescription.textContent = release.description;
+        releaseUrl.href = release.url;
+        releaseDownload.textContent = release.download;
+    }
+    updateRelease();
+
+    const releaseButtons = [...document.querySelectorAll(".release-buttons")];
+    releaseButtons.forEach((button, index) => {
+        button.addEventListener("click", () => {
+            if (index < linuxReleases.length) {
+                currentReleaseIndex = index;
+                
+                // Reset all buttons to default state.
+                releaseButtons.forEach((btn, btnIndex) => {
+                    btn.classList.remove("shadow-lg", "text-amber-200", "text-red-500", "text-blue-500");
+                    btn.classList.add("shadow-none", "text-indigo-400", "hover:text-indigo-200");
+                    
+                    const topElement = btn.querySelector(".release-buttons-top");
+                    if (topElement) {
+                        topElement.classList.remove("shadow-lg");
+                        topElement.classList.add("shadow-none");
+                    }
+                });
+                
+                // Set active state for clicked button.
+                const activeButton = releaseButtons[index];
+                activeButton.classList.remove("shadow-none", "text-indigo-400", "hover:text-indigo-200");
+                activeButton.classList.add("shadow-lg");
+                
+                // Set specific color based on index.
+                if (index === 0) {
+                    activeButton.classList.add("text-amber-200");
+                } else if (index === 1) {
+                    activeButton.classList.add("text-red-500");
+                } else if (index === 2) {
+                    activeButton.classList.add("text-blue-500");
+                }
+                
+                const topElement = activeButton.querySelector(".release-buttons-top");
+                if (topElement) {
+                    topElement.classList.remove("shadow-none");
+                    topElement.classList.add("shadow-lg");
+                }
+                updateRelease();
+            }
+        });
+    });
 </script>
