@@ -17,15 +17,20 @@
             We've had numerous apps that weren't working nicely (or at all) in Wine, this is one of the reasons we've created WinBoat. Some examples would be Affinity Photo, Paint Tool Sai v1.0, the entire Adobe suite, AeroChat, Acrobat, and of course Office.</p>
         </details>
         <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Will I be able to configure my peripherals / hardware using WinBoat?</a></summary>
+            <p class="details-content p-6 tracking-wide leading-8">If your peripheral / hardware uses USB to connect to your device. then yes! Starting from WinBoat 0.8.0 we support USB passthrough as an experimental feature and you can use any Windows software needed for configuration, it should work out of the box.</p>
+        </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
+            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Is there USB passthrough?</a></summary>
+            <p class="details-content p-6 tracking-wide leading-8">
+                Yes! Starting from WinBoat 0.8.0 we support USB passthrough as an experimental feature. Please give it a try and let us know what you think! 😄<br><br>
+                If for whatever reason you're stuck with an older version of WinBoat, you can modify the <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose.yml</span> file in <span class="bg-indigo-300/30 p-1.5 rounded-lg">~/.winboat</span> once you finished setting up WinBoat. You can add the appropriate USB devices <a href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-pass-through-a-usb-device" class="text-indigo-400 underline underline-offset-3">like this</a>, followed by executing <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose down</span> and <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose up -d</span> in the same folder. Please make sure to remove these changes before you upgrade to >=0.8.0 though, as they are incompatible with our implementation.</p>
+            </details>
+        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
             <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Is there GPU passthrough?</a></summary>
             <p class="details-content p-6 tracking-wide leading-8">Not at the moment, but we plan on eventually implementing GPU acceleration through paravirtualized drivers.<br><br>
             We have looked at MVisor Win VGPU Driver for OpenGL, which seems promising from our tests, but it's for a different hypervisor (not compatible with QEMU). Some other folks are also working on DirectX drivers but nothing that we can try out yet.<br><br>
             We have also looked into Looking Glass extensively, specifically their Indirect Display Driver which does not need a second GPU, because it'd be absolutely amazing to have it. We got the driver to compile and start via some hacks, but couldn't get much more than a black screen. The developer says it is not ready for general use yet at all, however we plan to integrate it once it is ready.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Will I be able to configure my hardware using WinBoat?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">For devices with USB, you can, but you need to do it manually for now. When eventually we add USB passthrough, you'll be able to do it from the WinBoat app itself.<br><br>
-            Until then, you can modify the <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose.yml</span> file in <span class="bg-indigo-300/30 p-1.5 rounded-lg">~/.winboat</span> once you finished setting up WinBoat. You can add the appropriate USB devices <a href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-pass-through-a-usb-device" class="text-indigo-400 underline underline-offset-3">like this</a>, followed by executing <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose down</span> and <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose up -d</span> in the same folder.</p>
         </details>
         <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
             <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Does it run games with anti-cheat that don't run on Linux?</a></summary>
