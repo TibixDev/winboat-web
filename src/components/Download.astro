@@ -71,11 +71,11 @@ import { Icon } from "astro-icon/components";
     if (data.tag_name) {
         document.getElementById("app-version")!.textContent = `Current version: ${data.tag_name}`;
     } else {
-        document.getElementById("app-version")!.textContent = `Current version: v0.7.7`;
+        document.getElementById("app-version")!.textContent = `Current version: v0.8.0`;
     }
     
     // List of available official releases with manual fallback.
-    const dataClean = data.tag_name ? data.tag_name.replace("v", "") : "0.7.7";
+    const dataClean = data.tag_name ? data.tag_name.replace("v", "") : "0.8.0";
     const releases = {
         "linux": {
             "appImage": {
