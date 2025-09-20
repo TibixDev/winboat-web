@@ -30,6 +30,11 @@ import { Icon } from "astro-icon/components";
                 <Icon class="h-12 w-12" name="mdi:fedora" />
                 <h2 class="font-bold text-indigo-200">Fedora</h2>
             </div>
+            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+                <Icon class="h-12 w-12" name="mdi:arch" />
+                <h2 class="font-bold text-indigo-200">Arch</h2>
+            </div>
         </div>
         <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col justify-center gap-6 rounded-b-xl md:rounded-b-none">
             <div class="flex flex-col gap-4">
@@ -37,6 +42,7 @@ import { Icon } from "astro-icon/components";
                     <Icon id="release-icon-appimage" class=" h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
                     <Icon id="release-icon-debian" class="hidden h-8 w-8 text-indigo-400" name="mdi:debian" />
                     <Icon id="release-icon-rpm" class="hidden h-8 w-8 text-indigo-400" name="mdi:fedora" />
+                    <Icon id="release-icon-arch" class="hidden h-8 w-8 text-indigo-400" name="mdi:arch" />
                     <span id="release-title"></span>
                 </h3>
                 <p id="release-description" class="text-neutral-300"></p>
@@ -95,6 +101,12 @@ import { Icon } from "astro-icon/components";
                 "description": "RPM packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Fedora-based distributions, however you are the one responsible for keeping them up to date.",
                 "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.rpm`,
                 "download": "Download .rpm"
+            },
+            "arch": {
+                "name": "AUR | Arch based distros",
+                "description": "There are multiple versions of winboat on AUR, we recommend using the bin version, as it doesn't require compiling the app from scratch. All versions of WinBoat on AUR are maintained by the community, and are not affiliated with the WinBoat team. Use at your own risk.",
+                "url": "https://aur.archlinux.org/packages/winboat-bin",
+                "download": "Download from AUR"
             }
         }
     }
@@ -147,6 +159,8 @@ import { Icon } from "astro-icon/components";
                 } else if (index === 1) {
                     activeButton.classList.add("text-red-500");
                 } else if (index === 2) {
+                    activeButton.classList.add("text-blue-500");
+                } else if(index === 3) {
                     activeButton.classList.add("text-blue-500");
                 }
                 
