@@ -13,30 +13,30 @@ import { Icon } from "astro-icon/components";
         We're excited to have you onboard! Pick your platform below to get started with WinBoat within minutes, not hours.
     </p>
 
-    <div class="flex flex-col md:flex-row">
-        <div class="flex flex-row md:flex-col justify-center md:justify-start items-center overflow-hidden gap-6 py-4 px-2.5 rounded-t-xl md:rounded-l-xl md:rounded-t-none shadow-lg bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 border-t-2 md:border-t-0 md:border-r-2 border-indigo-500">
+    <div class="flex flex-col">
+        <div class="flex flex-row justify-center md:justify-between items-center overflow-hidden gap-6 py-4 px-2.5 rounded-t-xl shadow-lg bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 border-t-2 md:border-t-0 md:border-b-2 border-indigo-500">
             <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-amber-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80">
                 <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
                 <Icon class="h-12 w-12" name="fluent:box-32-filled" />
                 <h2 class="font-bold text-indigo-200">AppImage</h2>
             </div>
-            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80" title="Planned for future releases">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+            <div class="release-buttons relative flex flex-col items-center p-2 md:p-2 md:px-5 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 md:p-0 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
                 <Icon class="h-12 w-12" name="mdi:debian" />
                 <h2 class="font-bold text-indigo-200">Debian</h2>
             </div>
-            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80" title="Planned for future releases">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+            <div class="release-buttons relative flex flex-col items-center p-2 md:p-2 md:px-5 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 md:p-0 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
                 <Icon class="h-12 w-12" name="mdi:fedora" />
                 <h2 class="font-bold text-indigo-200">Fedora</h2>
             </div>
-            <div class="release-buttons relative flex flex-col items-center p-2 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+            <div class="release-buttons relative flex flex-col items-center p-2 md:p-2 md:px-5 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
+                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 md:p-0 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
                 <Icon class="h-12 w-12" name="mdi:arch" />
                 <h2 class="font-bold text-indigo-200">Arch</h2>
             </div>
         </div>
-        <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col justify-center gap-6 rounded-b-xl md:rounded-b-none">
+        <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col justify-center gap-6 rounded-b-xl">
             <div class="flex flex-col gap-4">
                 <h3 class="text-2xl font-semibold flex flex-row items-center gap-2">
                     <Icon id="release-icon-appimage" class=" h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
@@ -119,7 +119,6 @@ import { Icon } from "astro-icon/components";
     const releaseDescription = document.getElementById("release-description")!;
     const releaseUrl = document.getElementById("release-url") as HTMLAnchorElement;
     const releaseDownload = document.getElementById("release-download")!;
-    const releaseIcons = ["release-icon-appimage", "release-icon-debian", "release-icon-rpm"];
 
     function updateRelease() {
         const release = linuxReleases[currentReleaseIndex];
@@ -161,7 +160,7 @@ import { Icon } from "astro-icon/components";
                 } else if (index === 2) {
                     activeButton.classList.add("text-blue-500");
                 } else if(index === 3) {
-                    activeButton.classList.add("text-blue-500");
+                    activeButton.classList.add("text-blue-400");
                 }
                 
                 const topElement = activeButton.querySelector(".release-buttons-top");
