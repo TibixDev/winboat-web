@@ -13,20 +13,40 @@ import { Icon } from "astro-icon/components";
     <OpenSourceAnim />
     <p class="text-lg text-gray-300 max-w-2xl text-center">
       WinBoat is an <a target="_blank" rel="noopener noreferrer" href="https://github.com/TibixDev/winboat">open-source project</a> licensed under MIT, and we welcome contributions from the community.
-      Whether you're a developer, designer, or just someone who loves WinBoat, there are many ways you can help us improve and grow.
+      Whether you're a developer, designer, or just someone who loves WinBoat and would like to help us financially, there are multiple ways you can help us improve and grow.
     </p>
-    <div class="flex flex-row gap-6 mt-6">
+    <div class="flex flex-col md:flex-row gap-6 mt-6">
         <a
             href="https://github.com/TibixDev/winboat"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex flex-row items-center gap-2 rounded-md bg-indigo-200 px-6 py-3 text-neutral-700 transition ease-in-out hover:scale-x-105 hover:saturate-200
-                    shadow-md shadow-indigo-200/60 hover:shadow-lg hover:shadow-indigo-200/70"
+            class="flex flex-row items-center gap-2 rounded-md bg-blue-300 px-6 py-3 text-neutral-800 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                    shadow-md shadow-blue-200/60 hover:shadow-lg hover:shadow-blue-200/70"
         >
             <Icon class="h-6 w-6" name="fluent:code-block-32-filled" />
             Browse Repository
         </a>
-    </div>
+        <a
+            href="https://ko-fi.com/winboat"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-row items-center gap-2 rounded-md bg-red-300 px-6 py-3 text-neutral-800 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                    shadow-md shadow-red-200/60 hover:shadow-lg hover:shadow-red-200/70"
+        >
+            <Icon class="h-6 w-6" name="cib:ko-fi" />
+            Donate through Ko-fi
+        </a>
+        <a
+            href="#"
+            onclick="navigator.clipboard.writeText('4AkmHDdHDmJgsz75Yj9gRUJKcroWLg7x6Rf3bBWd4G5ZebiFtPebynKCsJRrVyzh8TZdEM6VqiKF4do5tnQzLAojDzDcs8L'); alert('XMR Address copied to clipboard!'); return false;"
+            class="flex flex-row items-center gap-2 rounded-md bg-orange-300 px-6 py-3 text-neutral-800 transition ease-in-out hover:scale-x-105 hover:saturate-200
+                    shadow-md shadow-orange-200/60 hover:shadow-lg hover:shadow-orange-200/70"
+        >
+            <Icon class="h-6 w-6" name="token:xmr" />
+            Copy XMR Address
+        </a>
+      </div>
+      <p class="text-gray-500 text-center"><b>Note:</b> If you have sent donation via XMR make sure to alert us on Discord manually to receive your Donator role.</p>
 </div>
 
 </section>
