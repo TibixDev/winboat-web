@@ -1,0 +1,25 @@
+---
+import SponsorCard from "./SponsorCard.astro";
+---
+
+<section id="sponsors" class="min-h-screen flex flex-col items-center justify-center">
+    <h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold mb-12 text-center">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-transparent to-indigo-400">SSSS/</span><!--
+        -->Sponsors<!--
+        --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/ssss</span>
+    </h2>
+
+    <p class="text-lg text-gray-300 max-w-2xl text-center mb-8">
+        Some awesome organizations that help make Winboat possible.
+    </p>
+    <div class="flex flex-wrap justify-center gap-8">
+        <SponsorCard
+            title="Firstheberg - Servers"
+            description="Firstheberg provides us with reliable servers where we can host our infrastructure, such as the website you're looking at, our CI/CD pipelines, VM-s for manual testing, and more."
+            iconName="mdi:server"
+            imageSrc="https://www.firstheberg.com/images/logo.png"
+            imageAlt="Firstheberg Logo"
+            url="https://www.firstheberg.com/en/"
+        />
+    </div>
+</section>
