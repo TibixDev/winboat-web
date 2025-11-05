@@ -47,6 +47,15 @@ import { Icon } from "astro-icon/components";
         </a>
       </div>
       <p class="text-gray-500 text-center"><b>Note:</b> If you have sent donation via XMR make sure to alert us on Discord manually to receive your Donator role.</p>
+      <script 
+        src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'
+        onload="kofiWidgetOverlay.draw('winboat', {
+          'type': 'floating-chat',
+          'floating-chat.donateButton.text': 'Support Us',
+          'floating-chat.donateButton.background-color': '#794bc4',
+          'floating-chat.donateButton.text-color': '#fff'
+        });"
+      ></script>
 </div>
 
 </section>
