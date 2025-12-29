@@ -1,138 +1,132 @@
+---
+// Helper to generate slug from question text
+function slugify(text: string): string {
+    return text
+        .toLowerCase()
+        .replace(/\?/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+}
+
+const faqs = [
+    {
+        question: "How does it compare to WinApps?",
+        answer: `With WinApps you do the bulk of the setup manually, and there's no cohesive interface to bring it all together. There's a basic TUI, a taskbar widget, and some CLI commands for you to play with.<br><br>
+WinBoat does all the setup once you have the pre-requisites installed, displays everything worth seeing in a neat interface for you, and acts like a complete experience. No need to mess with configuration files, no need to memorize a dozen CLI commands, it just works.`,
+    },
+    {
+        question: "What are the advantages of using this over CrossOver or WINE?",
+        answer: `You can run stuff that doesn't play well with CrossOver or WINE, and have a full Windows desktop at the same time.<br><br>
+We've had numerous apps that weren't working nicely (or at all) in Wine, this is one of the reasons we've created WinBoat. Some examples would be Affinity Photo, Paint Tool Sai v1.0, the entire Adobe suite, AeroChat, Acrobat, and of course Office.`,
+    },
+    {
+        question: "Will Windows be activated after I install it with WinBoat?",
+        answer: `Of course not, WinBoat does not provide any licenses for Windows. All the default ISO-s WinBoat downloads ship with the trial version of the operating system, much like if you were to download it directly from Microsoft, and you must bring your own license key to activate it.`,
+    },
+    {
+        question: "Will I be able to configure my peripherals / hardware using WinBoat?",
+        answer: `If your peripheral / hardware uses USB to connect to your device. then yes! Starting from WinBoat 0.8.0 we support USB passthrough as an experimental feature and you can use any Windows software needed for configuration, it should work out of the box.`,
+    },
+    {
+        question: "Is there USB passthrough?",
+        answer: `Yes! Starting from WinBoat 0.8.0 we support USB passthrough as an experimental feature. Please give it a try and let us know what you think! 😄<br><br>
+If for whatever reason you're stuck with an older version of WinBoat, you can modify the <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose.yml</span> file in <span class="bg-indigo-300/30 p-1.5 rounded-lg">~/.winboat</span> once you finished setting up WinBoat. You can add the appropriate USB devices <a target="_blank" href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-pass-through-a-usb-device" class="text-indigo-400 underline underline-offset-3">like this</a>, followed by executing <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose down</span> and <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose up -d</span> in the same folder. Please make sure to remove these changes before you upgrade to >=0.8.0 though, as they are incompatible with our implementation.`,
+    },
+    {
+        question: "Is there GPU acceleration/passthrough?",
+        answer: `Not at the moment, but we plan on eventually implementing GPU acceleration through paravirtualized drivers.<br><br>
+We have looked at the <a target="_blank" href="https://github.com/tenclass/mvisor-win-vgpu-driver" class="text-indigo-400 underline underline-offset-3">MVisor Win VGPU Driver for OpenGL</a>, which seems promising from our tests, but it's for a different hypervisor (not compatible with QEMU) and requires porting work. Some other folks are also working on <a target="_blank" href="https://github.com/virtio-win/kvm-guest-drivers-windows/issues/773" class="text-indigo-400 underline underline-offset-3">DirectX</a> drivers but it's not very stable or very functional at the moment from our experience, and it seems to be half-abandoned.`,
+    },
+    {
+        question: "Do you plan on adding something even smoother than RDP?",
+        answer: `At the moment RDP is the best choice for performance.<br><br>
+We have also looked into Looking Glass extensively, specifically their Indirect Display Driver which does not need a second GPU attached to Windows. It will provide high refresh rate, high performance display streaming. Check <a class="text-indigo-400 underline underline-offset-3" target="_blank" href="https://www.youtube.com/watch?v=cg50X9w5llI">this video</a> for more information on how it works. We got the driver to compile and start via some hacks, but couldn't get much more than a black screen. The developer says it is not ready for general use yet at all, however we plan to integrate it once it is ready. It is important to note that this is <b>not</b> for GPU acceleration, this is just display streaming done much better than any existing solution.`,
+    },
+    {
+        question: "Does it run games with anti-cheat that don't run on Linux?",
+        answer: `Unfortunately running games with kernel anti-cheat is not possible, as they block virtualization.`,
+    },
+    {
+        question: "Any possibility of adding Podman support as a Docker alternative?",
+        answer: `Podman is now supported starting from WinBoat v0.9.0, please let us know if you run into any issues. USB passthrough via Podman is not supported yet, but we're working on it.`,
+    },
+    {
+        question: "Will you publish WinBoat as a Flatpak?",
+        answer: `This is on our to-do list, but it'll take some effort because Flatpak is pretty isolated from the rest of the system and apps, so we'd have to find a way to expose installed apps, the Docker/Podman binary, and the Docker/Podman socket, and many other utilities.`,
+    },
+    {
+        question: "So, can I run Office 365 on it?",
+        answer: `Yeah, of course! 😄`,
+    },
+].map((faq) => ({ ...faq, id: slugify(faq.question) }));
+---
+
 <section id="faq">
-    <h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold mb-12 text-center">
-    <span class="text-transparent bg-clip-text bg-gradient-to-r from-transparent to-indigo-400">FFFFF/</span><!--
+    <h2 class="mb-12 text-center text-2xl font-semibold md:text-3xl lg:text-4xl 2xl:text-5xl">
+        <span class="bg-gradient-to-r from-transparent to-indigo-400 bg-clip-text text-transparent">FFFFF/</span><!--
     -->Frequently Asked Questions<!--
-    --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/sssss</span>
+    -->
+        <span class="bg-gradient-to-l from-transparent to-indigo-400 bg-clip-text text-transparent">/sssss</span>
     </h2>
 
-    <div class="flex flex-col gap-6 w-[95%] lg:w-[60%] m-auto text-left">
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>How does it compare to WinApps?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">With WinApps you do the bulk of the setup manually, and there's no cohesive interface to bring it all together. There's a basic TUI, a taskbar widget, and some CLI commands for you to play with.<br><br>
-                WinBoat does all the setup once you have the pre-requisites installed, displays everything worth seeing in a neat interface for you, and acts like a complete experience. No need to mess with configuration files, no need to memorize a dozen CLI commands, it just works.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>What are the advantages of using this over CrossOver or WINE?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">You can run stuff that doesn't play well with CrossOver or WINE, and have a full Windows desktop at the same time.<br><br>
-            We've had numerous apps that weren't working nicely (or at all) in Wine, this is one of the reasons we've created WinBoat. Some examples would be Affinity Photo, Paint Tool Sai v1.0, the entire Adobe suite, AeroChat, Acrobat, and of course Office.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Will Windows be activated after I install it with WinBoat?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">Of course not, WinBoat does not provide any licenses for Windows. All the default ISO-s WinBoat downloads ship with the trial version of the operating system, much like if you were to download it directly from Microsoft, and you must bring your own license key to activate it.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Will I be able to configure my peripherals / hardware using WinBoat?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">If your peripheral / hardware uses USB to connect to your device. then yes! Starting from WinBoat 0.8.0 we support USB passthrough as an experimental feature and you can use any Windows software needed for configuration, it should work out of the box.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Is there USB passthrough?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">
-                Yes! Starting from WinBoat 0.8.0 we support USB passthrough as an experimental feature. Please give it a try and let us know what you think! 😄<br><br>
-                If for whatever reason you're stuck with an older version of WinBoat, you can modify the <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose.yml</span> file in <span class="bg-indigo-300/30 p-1.5 rounded-lg">~/.winboat</span> once you finished setting up WinBoat. You can add the appropriate USB devices <a target="_blank" href="https://github.com/dockur/windows?tab=readme-ov-file#how-do-i-pass-through-a-usb-device" class="text-indigo-400 underline underline-offset-3">like this</a>, followed by executing <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose down</span> and <span class="bg-indigo-300/30 p-1.5 rounded-lg">docker-compose up -d</span> in the same folder. Please make sure to remove these changes before you upgrade to >=0.8.0 though, as they are incompatible with our implementation.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Is there GPU acceleration/passthrough?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">Not at the moment, but we plan on eventually implementing GPU acceleration through paravirtualized drivers.<br><br>
-            We have looked at the <a target="_blank" href="https://github.com/tenclass/mvisor-win-vgpu-driver" class="text-indigo-400 underline underline-offset-3">MVisor Win VGPU Driver for OpenGL</a>, which seems promising from our tests, but it's for a different hypervisor (not compatible with QEMU) and requires porting work. Some other folks are also working on <a target="_blank" href="https://github.com/virtio-win/kvm-guest-drivers-windows/issues/773" class="text-indigo-400 underline underline-offset-3">DirectX</a> drivers but it's not very stable or very functional at the moment from our experience, and it seems to be half-abandoned.
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Do you plan on adding something even smoother than RDP?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">At the moment RDP is the best choice for performance.<br><br>
-            We have also looked into Looking Glass extensively, specifically their Indirect Display Driver which does not need a second GPU attached to Windows. It will provide high refresh rate, high performance display streaming. Check <a class="text-indigo-400 underline underline-offset-3" target="_blank" href="https://www.youtube.com/watch?v=cg50X9w5llI">this video</a> for more information on how it works. We got the driver to compile and start via some hacks, but couldn't get much more than a black screen. The developer says it is not ready for general use yet at all, however we plan to integrate it once it is ready. It is important to note that this is <b>not</b> for GPU acceleration, this is just display streaming done much better than any existing solution.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Does it run games with anti-cheat that don't run on Linux?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">Unfortunately running games with kernel anti-cheat is not possible, as they block virtualization.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Any possibility of adding Podman support as a Docker alternative?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">Podman is now supported starting from WinBoat v0.9.0, please let us know if you run into any issues. USB passthrough via Podman is not supported yet, but we're working on it.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>Will you publish WinBoat as a Flatpak?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">This is on our to-do list, but it'll take some effort because Flatpak is pretty isolated from the rest of the system and apps, so we'd have to find a way to expose installed apps, the Docker/Podman binary, and the Docker/Podman socket, and many other utilities.</p>
-        </details>
-        <details class="bg-gradient-to-b from-indigo-900/50 to-transparent rounded-2xl">
-            <summary class="p-6 text-lg bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 rounded-2xl select-none cursor-pointer"><a>So, can I run Office 365 on it?</a></summary>
-            <p class="details-content p-6 tracking-wide leading-8">Yeah, of course! 😄</p>
-        </details>
+    <div class="m-auto flex w-[95%] flex-col gap-6 text-left lg:w-[60%]">
+        {
+            faqs.map((faq) => (
+                <details id={faq.id} class="faq-item rounded-2xl bg-gradient-to-b from-indigo-900/50 to-transparent">
+                    <summary class="faq-summary cursor-pointer rounded-2xl bg-gradient-to-b from-indigo-500/50 to-indigo-900/40 p-6 text-lg select-none">
+                        <span class="faq-arrow">▸</span>
+                        <span class="faq-question">{faq.question}</span>
+                    </summary>
+                    <p class="p-6 leading-8 tracking-wide" set:html={faq.answer} />
+                </details>
+            ))
+        }
     </div>
 </section>
 
 <style>
-    details {
-        overflow: hidden;
+    /* Hide default details marker */
+    .faq-summary {
+        list-style: none;
     }
-    
-    .details-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.01s ease-out;
+    .faq-summary::-webkit-details-marker {
+        display: none;
     }
-    
-    details[open] .details-content {
-        max-height: none;
+
+    /* Arrow indicator */
+    .faq-arrow {
+        display: inline-block;
+        margin-right: 0.5rem;
+    }
+
+    details[open] .faq-arrow {
+        transform: rotate(90deg);
     }
 </style>
 
 <script>
-    // Small animation for expanding/collapsing details.
+    // Open FAQ item based on URL hash
+    function openFaqFromHash() {
+        const hash = window.location.hash;
+        if (hash) {
+            const targetDetails = document.querySelector(`details.faq-item${hash}`) as HTMLDetailsElement;
+            if (targetDetails) {
+                targetDetails.open = true;
+                targetDetails.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }
+    }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const details = document.querySelectorAll('details');
-        
-        details.forEach(detail => {
-            const summary = detail.querySelector('summary') as HTMLElement;
-            const content = detail.querySelector('.details-content') as HTMLElement;
-            
-            summary.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                if (detail.open) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                    content.offsetHeight;
-                    content.style.maxHeight = '0';
-                    
-                    content.addEventListener('transitionend', () => {
-                        detail.open = false;
-                    }, { once: true });
-                } else {
-                    detail.open = true;
-                    content.style.maxHeight = '0';
-                    content.offsetHeight;
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                }
-            });
+    // Update URL hash when a FAQ item is opened
+    document.querySelectorAll("details.faq-item").forEach((details) => {
+        details.addEventListener("toggle", () => {
+            if ((details as HTMLDetailsElement).open) {
+                history.replaceState(null, "", `#${details.id}`);
+            }
         });
     });
 
-
-    // Redirect to certain FAQ details if hash matches the question.
-    
-    const hash = window.location.hash;
-    const summaries = [...document.querySelectorAll('summary a')];
-    const detailsIds = summaries.map(e =>
-        (e as HTMLElement).innerText
-            .toLowerCase()
-            .replace(/\?/g, '')
-            .replace(/[^a-z0-9]+/g, '-')
-    );
-    console.log(detailsIds);
-
-    for (let i = 0; i < detailsIds.length; i++) {
-        const id = detailsIds[i];
-        summaries[i].setAttribute('href', `#${id}`);
-        if (hash === `#${id}`) {
-            const detail = summaries[i].closest('details');
-            if (detail) {
-                detail.setAttribute('id', id);
-                detail.open = true;
-                const content = detail.querySelector('.details-content') as HTMLElement;
-                if (content) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
-                }
-            }
-            break;
-        }
-    }
+    // Handle initial page load and hash changes
+    openFaqFromHash();
+    window.addEventListener("hashchange", openFaqFromHash);
 </script>
