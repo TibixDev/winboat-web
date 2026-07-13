@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="w-[90%] p-6 bg-gradient-to-r from-indigo-500/50 to-indigo-900/40 rounded-3xl text-xl">
+  <h1 class="mb-12 text-center text-2xl font-semibold md:text-3xl lg:text-4xl">WinBoat Guest Server Offline - What do I do?</h1>
+  <p>There's no need to be worried, first off make sure you waited at least a minute or so for the Guest Server to come online automatically after booting the container.</p>
+  <br>
+  <p>If the Guest Server is still offline, there's several reasons why it can happen, such as a failed update, Defender incorrectly marking our Guest Server as malicious, or other strange issues.</p>
+  <br>
+  <p><strong>You most likely must update the Guest Server manually to fix this issue:</strong></p>
+  <br>
+  <ol class="list-decimal pl-10 space-y-6">
+    <li>
+      <p>Use one of the following commands to get the VNC URL for your container:</p>
+      <br>
+      <div class="w-[90%] font-mono text-lg p-4 bg-zinc-800/70 rounded-2xl">
+        <p><em># For Podman</em></p>
+        <span>podman port WinBoat <span class="text-amber-300">|</span> grep <span class="text-green-300">"8006"</span> <span class="text-amber-300">|</span> awk <span class="text-green-300">'&#123;print "http://" $3&#125;'</span></span>
+        <p><em># For Docker</em></p>
+        <span>docker port WinBoat <span class="text-amber-300">|</span> grep <span class="text-green-300">"8006"</span> <span class="text-amber-300">|</span> awk <span class="text-green-300">'&#123;print "http://" $3&#125;'</span></span>
+      </div>
+    </li>
+    <li>Navigate to the VNC URL displayed by the command to access the Desktop</li>
+    <li>Press Win + R (if that does not work, search for <code>Run</code>), you should see a dialog box that popped up, type in <code>services.msc</code> and press <code>Enter</code></li>
+    <li>Check if the <code>WinBoatGuestServer</code> service is running. If so, stop it by right clicking and pressing <code>Stop</code></li>
+    <li>Download the new Guest Server from https://github.com/TibixDev/winboat/releases, you should pick the same version that your WinBoat app displays in the bottom left corner</li>
+    <li>Navigate to <code>C:\Program Files\WinBoat</code> and delete the contents</li>
+    <li>Extract the freshly downloaded zip into the same folder (If Defender complains, add an exception or disable Defender entirely if you're comfortable with that)</li>
+    <li>Start the <code>WinBoatGuestServer</code> service by right clicking and pressing <code>Start</code></li>
+    <li>Close the VNC tab you opened</li>
+    <li>Done 🎉</li>
+  </ol>
+  <br>
+  <p>(If apps fail to launch, try rebooting the container after the Guest Server update and make sure VNC is closed)</p>
+</div>
+
+<style>
+  @reference "tailwindcss";
+
+  @layer base {
+    :not(pre) > code {
+      @apply rounded bg-indigo-300/20 px-1 py-0.5 font-mono text-neutral-200;
+    }
+  }
+</style>
