@@ -3,33 +3,66 @@ import winboat_logo from "../assets/winboat_logo.svg";
 import { Icon } from "astro-icon/components";
 ---
 
-<footer class="p-3 bg-gradient-to-t from-[#8b5cf640] to-transparent pt-20 mt-10">
-    <div class="flex flex-col md:flex-row justify-between container mx-auto items-center">        
+<footer class="mt-10 bg-gradient-to-t from-[#8b5cf640] to-transparent p-3 pt-20">
+    <div class="container mx-auto flex flex-col items-center justify-between md:flex-row">
         <div>
-            <div class="flex flex-row items-center gap-2 select-none mb-4">
+            <div class="mb-4 flex flex-row items-center gap-2 select-none">
                 <img src={winboat_logo.src} alt="WinBoat Logo" class="h-12 w-12" />
                 <span class="text-3xl font-semibold text-indigo-400">WinBoat</span>
             </div>
-            <p class="ml-1 text-sm text-gray-300 mb-4">Copyright © 2026 WinBoat.</p>
-            <p class="ml-1 text-xs text-gray-600 max-w-[30rem]">WinBoat is not affiliated with Microsoft Corporation, nor is it endorsed or sponsored by them. "Windows" is a registered trademark of Microsoft Corporation, and all associated assets (icons, logos, etc.) are the property of Microsoft.</p>
+            <p class="mb-4 ml-1 text-sm text-gray-300">Copyright © 2026 WinBoat.</p>
+            <p class="ml-1 max-w-[30rem] text-xs text-gray-600">
+                WinBoat is not affiliated with Microsoft Corporation, nor is it endorsed or sponsored by them. "Windows" is a registered trademark of Microsoft
+                Corporation, and all associated assets (icons, logos, etc.) are the property of Microsoft.
+            </p>
         </div>
-        <div class="flex flex-row items-center gap-2 mt-3 2xl:mt-0">
-            <a title="GitHub" href="https://github.com/TibixDev/winboat" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-500 transition-colors duration-300">
+        <div class="mt-3 flex flex-row items-center gap-2 2xl:mt-0">
+            <a
+                title="GitHub"
+                href="https://github.com/TibixDev/winboat"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-indigo-400 transition-colors duration-300 hover:text-indigo-500">
                 <Icon name="mdi:github" class="h-8 w-8" />
             </a>
-            <a title="Discord" href="https://discord.gg/MEwmpWm4tN" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-500 transition-colors duration-300">
+            <a
+                title="Discord"
+                href="https://discord.gg/MEwmpWm4tN"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-indigo-400 transition-colors duration-300 hover:text-indigo-500">
                 <Icon name="mdi:discord" class="h-8 w-8" />
             </a>
-            <a title="Bluesky" href="http://bsky.app/profile/winboat.app" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-500 transition-colors duration-300">
+            <a
+                title="Bluesky"
+                href="http://bsky.app/profile/winboat.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-indigo-400 transition-colors duration-300 hover:text-indigo-500">
                 <Icon name="mingcute:bluesky-social-fill" class="h-8 w-8" />
             </a>
-            <a title="Mastodon" href="https://fosstodon.org/@winboat" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-500 transition-colors duration-300">
+            <a
+                title="Mastodon"
+                href="https://fosstodon.org/@winboat"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-indigo-400 transition-colors duration-300 hover:text-indigo-500">
                 <Icon name="mingcute:mastodon-fill" class="h-8 w-8" />
             </a>
-            <a title="Twitter" href="https://x.com/winboat_app" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-500 transition-colors duration-300">
+            <a
+                title="Twitter"
+                href="https://x.com/winboat_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-indigo-400 transition-colors duration-300 hover:text-indigo-500">
                 <Icon name="mingcute:twitter-fill" class="h-8 w-8" />
             </a>
-            <a title="Email (staff@winboat.app)" href="mailto:staff@winboat.app" target="_blank" rel="noopener noreferrer" class="text-indigo-400 hover:text-indigo-500 transition-colors duration-300">
+            <a
+                title="Email (staff@winboat.app)"
+                href="mailto:staff@winboat.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-indigo-400 transition-colors duration-300 hover:text-indigo-500">
                 <Icon name="material-symbols:alternate-email-rounded" class="h-8 w-8" />
             </a>
         </div>

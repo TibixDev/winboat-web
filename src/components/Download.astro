@@ -2,44 +2,58 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<section id="download" class="min-h-screen flex flex-col items-center justify-center">
-    <h2 class="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-semibold mb-12 text-center">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-transparent to-indigo-400">DDDD/</span><!--
+<section id="download" class="flex min-h-screen flex-col items-center justify-center">
+    <h2 class="mb-12 text-center text-2xl font-semibold md:text-3xl lg:text-4xl 2xl:text-5xl">
+        <span class="bg-gradient-to-r from-transparent to-indigo-400 bg-clip-text text-transparent">DDDD/</span><!--
         -->Download<!--
-        --><span class="text-transparent bg-clip-text bg-gradient-to-l from-transparent to-indigo-400">/ddddd</span>
+        -->
+        <span class="bg-gradient-to-l from-transparent to-indigo-400 bg-clip-text text-transparent">/ddddd</span>
     </h2>
 
-    <p class="text-lg text-gray-300 max-w-2xl text-center mb-8">
+    <p class="mb-8 max-w-2xl text-center text-lg text-gray-300">
         We're excited to have you onboard! Pick your platform below to get started with WinBoat within minutes, not hours.
     </p>
 
-    <div class="flex flex-col w-full max-w-[40rem] mx-auto px-4">
-        <div class="flex flex-row md:justify-between items-center w-full overflow-x-auto md:overflow-visible gap-4 py-4 px-2.5 rounded-t-xl shadow-lg bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 border-t-2 md:border-t-0 md:border-b-2 border-indigo-500 scroll-smooth">
-            <div class="release-buttons flex-shrink-0 relative flex flex-col items-center p-2 hover:cursor-pointer text-amber-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 -translate-y-2 rounded-xl shadow-lg hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+    <div class="mx-auto flex w-full max-w-[40rem] flex-col px-4">
+        <div
+            class="flex w-full flex-row items-center gap-4 overflow-x-auto scroll-smooth rounded-t-xl border-t-2 border-indigo-500 bg-gradient-to-r from-indigo-600/50 via-transparent to-indigo-600/50 px-2.5 py-4 shadow-lg md:justify-between md:overflow-visible md:border-t-0 md:border-b-2">
+            <div
+                class="release-buttons relative flex aspect-square flex-shrink-0 flex-col items-center rounded-xl p-2 text-amber-200 shadow-lg shadow-indigo-500/80 transition-all hover:cursor-pointer hover:bg-indigo-100/0 hover:shadow-lg hover:duration-300">
+                <div
+                    class="release-buttons-top absolute aspect-square h-full w-full -translate-y-2 rotate-180 rounded-xl p-2 shadow-lg shadow-indigo-500/80 transition-all hover:shadow-lg">
+                </div>
                 <Icon class="h-12 w-12" name="fluent:box-32-filled" />
                 <h2 class="font-bold text-indigo-200">AppImage</h2>
             </div>
-            <div class="release-buttons relative flex flex-col items-center p-2 md:p-2 md:px-5 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 md:p-0 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+            <div
+                class="release-buttons relative flex aspect-square flex-col items-center rounded-xl p-2 text-indigo-400 shadow-none shadow-indigo-500/80 transition-all hover:cursor-pointer hover:bg-indigo-100/0 hover:text-indigo-200 hover:shadow-lg hover:duration-300 md:p-2 md:px-5">
+                <div
+                    class="release-buttons-top absolute aspect-square h-full w-full -translate-y-2 rotate-180 rounded-xl p-2 shadow-none shadow-indigo-500/80 transition-all hover:shadow-lg md:p-0">
+                </div>
                 <Icon class="h-12 w-12" name="mdi:debian" />
                 <h2 class="font-bold text-indigo-200">Debian</h2>
             </div>
-            <div class="release-buttons relative flex flex-col items-center p-2 md:p-2 md:px-5 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 md:p-0 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+            <div
+                class="release-buttons relative flex aspect-square flex-col items-center rounded-xl p-2 text-indigo-400 shadow-none shadow-indigo-500/80 transition-all hover:cursor-pointer hover:bg-indigo-100/0 hover:text-indigo-200 hover:shadow-lg hover:duration-300 md:p-2 md:px-5">
+                <div
+                    class="release-buttons-top absolute aspect-square h-full w-full -translate-y-2 rotate-180 rounded-xl p-2 shadow-none shadow-indigo-500/80 transition-all hover:shadow-lg md:p-0">
+                </div>
                 <Icon class="h-12 w-12" name="mdi:fedora" />
                 <h2 class="font-bold text-indigo-200">Fedora</h2>
             </div>
-            <div class="release-buttons relative flex flex-col items-center p-2 md:p-2 md:px-5 hover:cursor-pointer text-indigo-400 hover:text-indigo-200 transition-all hover:duration-300 hover:bg-indigo-100/0 aspect-square rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80">
-                <div class="release-buttons-top absolute w-full h-full aspect-square p-2 md:p-0 -translate-y-2 rounded-xl shadow-none hover:shadow-lg shadow-indigo-500/80 rotate-180 transition-all"></div>
+            <div
+                class="release-buttons relative flex aspect-square flex-col items-center rounded-xl p-2 text-indigo-400 shadow-none shadow-indigo-500/80 transition-all hover:cursor-pointer hover:bg-indigo-100/0 hover:text-indigo-200 hover:shadow-lg hover:duration-300 md:p-2 md:px-5">
+                <div
+                    class="release-buttons-top absolute aspect-square h-full w-full -translate-y-2 rotate-180 rounded-xl p-2 shadow-none shadow-indigo-500/80 transition-all hover:shadow-lg md:p-0">
+                </div>
                 <Icon class="h-12 w-12" name="mdi:arch" />
                 <h2 class="font-bold text-indigo-200">Arch</h2>
             </div>
         </div>
-        <div class="bg-gradient-to-r from-indigo-500/50 to-transparent rounded-r-xl p-6 max-w-[35rem] flex flex-col justify-center gap-6 rounded-b-xl">
+        <div class="flex max-w-[35rem] flex-col justify-center gap-6 rounded-r-xl rounded-b-xl bg-gradient-to-r from-indigo-500/50 to-transparent p-6">
             <div class="flex flex-col gap-4">
-                <h3 class="text-2xl font-semibold flex flex-row items-center gap-2">
-                    <Icon id="release-icon-appimage" class=" h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
+                <h3 class="flex flex-row items-center gap-2 text-2xl font-semibold">
+                    <Icon id="release-icon-appimage" class="h-8 w-8 text-indigo-400" name="fluent:box-32-filled" />
                     <Icon id="release-icon-debian" class="hidden h-8 w-8 text-indigo-400" name="mdi:debian" />
                     <Icon id="release-icon-rpm" class="hidden h-8 w-8 text-indigo-400" name="mdi:fedora" />
                     <Icon id="release-icon-arch" class="hidden h-8 w-8 text-indigo-400" name="mdi:arch" />
@@ -53,19 +67,17 @@ import { Icon } from "astro-icon/components";
                     href="https://github.com/TibixDev/winboat/releases"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex flex-row items-center gap-2 rounded-md bg-indigo-500 px-5 py-2 transition ease-in-out hover:scale-x-105 hover:saturate-200
-                        shadow-md shadow-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/70 w-max"
-                >
+                    class="flex w-max flex-row items-center gap-2 rounded-md bg-indigo-500 px-5 py-2 shadow-md shadow-indigo-500/60 transition ease-in-out hover:scale-x-105 hover:shadow-lg hover:shadow-indigo-500/70 hover:saturate-200">
                     <Icon class="h-6 w-6" name="fluent:arrow-download-32-filled" />
                     <p id="release-download"></p>
                 </a>
-                <p id="app-version" class="text-neutral-400 text-sm"></p>
+                <p id="app-version" class="text-sm text-neutral-400"></p>
             </div>
         </div>
-        <p class="mt-12 text-sm text-gray-500 text-center mb-8 max-w-[500px] mx-auto">
-            🚧 <b>WinBoat is currently in Beta</b>, so expect to occasionally run into hiccups and bugs.
-            You should be comfortable with some level of troubleshooting if you decide to try it, however we encourage you to give it a shot anyway.
-            The current iteration is not representative of the final product.
+        <p class="mx-auto mt-12 mb-8 max-w-[500px] text-center text-sm text-gray-500">
+            🚧 <b>WinBoat is currently in Beta</b>, so expect to occasionally run into hiccups and bugs. You should be comfortable with some level of
+            troubleshooting if you decide to try it, however we encourage you to give it a shot anyway. The current iteration is not representative of the final
+            product.
         </p>
     </div>
 </section>
@@ -84,37 +96,41 @@ import { Icon } from "astro-icon/components";
     } else {
         document.getElementById("app-version")!.textContent = `Current version: v0.8.0`;
     }
-    
+
     // List of available official releases with manual fallback.
     const dataClean = data.tag_name ? data.tag_name.replace("v", "") : "0.8.0";
     const releases = {
-        "linux": {
-            "appImage": {
-                "name": "AppImage | Most Linux distros",
-                "description": "AppImage releases are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Linux distributions, however you are the one responsible for keeping them up to date.",
-                "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.AppImage`,
-                "download": "Download AppImage"
+        linux: {
+            appImage: {
+                name: "AppImage | Most Linux distros",
+                description:
+                    "AppImage releases are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Linux distributions, however you are the one responsible for keeping them up to date.",
+                url: `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.AppImage`,
+                download: "Download AppImage",
             },
-            "debian": {
-                "name": ".deb | Debian based distros",
-                "description": "Debian packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Debian-based distributions, however you are the one responsible for keeping them up to date.",
-                "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-amd64.deb`,
-                "download": "Download .deb"
+            debian: {
+                name: ".deb | Debian based distros",
+                description:
+                    "Debian packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Debian-based distributions, however you are the one responsible for keeping them up to date.",
+                url: `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-amd64.deb`,
+                download: "Download .deb",
             },
-            "rpm": {
-                "name": ".rpm | Fedora based distros",
-                "description": "RPM packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Fedora-based distributions, however you are the one responsible for keeping them up to date.",
-                "url": `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.rpm`,
-                "download": "Download .rpm"
+            rpm: {
+                name: ".rpm | Fedora based distros",
+                description:
+                    "RPM packages are built automatically by GitHub's CI system on every tagged release. They are generally compatible with most modern Fedora-based distributions, however you are the one responsible for keeping them up to date.",
+                url: `https://github.com/TibixDev/winboat/releases/download/${data.tag_name}/winboat-${dataClean}-x86_64.rpm`,
+                download: "Download .rpm",
             },
-            "arch": {
-                "name": "AUR | Arch based distros",
-                "description": "There are multiple versions of WinBoat on AUR, we recommend using the bin version, as it doesn't require compiling the app from scratch. All versions of WinBoat on AUR are maintained by the community, and are not affiliated with the WinBoat team. Use at your own risk.",
-                "url": "https://aur.archlinux.org/packages/winboat-bin",
-                "download": "Download from AUR"
-            }
-        }
-    }
+            arch: {
+                name: "AUR | Arch based distros",
+                description:
+                    "There are multiple versions of WinBoat on AUR, we recommend using the bin version, as it doesn't require compiling the app from scratch. All versions of WinBoat on AUR are maintained by the community, and are not affiliated with the WinBoat team. Use at your own risk.",
+                url: "https://aur.archlinux.org/packages/winboat-bin",
+                download: "Download from AUR",
+            },
+        },
+    };
 
     // Handling toggle between releases.
     const linuxReleases = Object.values(releases.linux);
@@ -139,24 +155,24 @@ import { Icon } from "astro-icon/components";
         button.addEventListener("click", () => {
             if (index < linuxReleases.length) {
                 currentReleaseIndex = index;
-                
+
                 // Reset all buttons to default state.
                 releaseButtons.forEach((btn, btnIndex) => {
                     btn.classList.remove("shadow-lg", "text-amber-200", "text-red-500", "text-blue-500");
                     btn.classList.add("shadow-none", "text-indigo-400", "hover:text-indigo-200");
-                    
+
                     const topElement = btn.querySelector(".release-buttons-top");
                     if (topElement) {
                         topElement.classList.remove("shadow-lg");
                         topElement.classList.add("shadow-none");
                     }
                 });
-                
+
                 // Set active state for clicked button.
                 const activeButton = releaseButtons[index];
                 activeButton.classList.remove("shadow-none", "text-indigo-400", "hover:text-indigo-200");
                 activeButton.classList.add("shadow-lg");
-                
+
                 // Set specific color based on index.
                 if (index === 0) {
                     activeButton.classList.add("text-amber-200");
@@ -164,10 +180,10 @@ import { Icon } from "astro-icon/components";
                     activeButton.classList.add("text-red-500");
                 } else if (index === 2) {
                     activeButton.classList.add("text-blue-500");
-                } else if(index === 3) {
+                } else if (index === 3) {
                     activeButton.classList.add("text-blue-400");
                 }
-                
+
                 const topElement = activeButton.querySelector(".release-buttons-top");
                 if (topElement) {
                     topElement.classList.remove("shadow-none");
