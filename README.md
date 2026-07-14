@@ -9,11 +9,13 @@ This repository hosts the website for WinBoat.
 ## Development
 
 To install the dependencies, run:
+
 ```bash
 bun install
 ```
 
 To run the development server, run:
+
 ```bash
 bun run dev
 ```
